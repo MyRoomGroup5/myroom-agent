@@ -13,12 +13,14 @@
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
     "koa-router": "^10.1.1",
-    "koa-static": "^5.0.0"
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6"
   },
   "devDependencies": {
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
     "@types/koa-static": "^4.0.2",
+    "@types/koa2-cors": "^2.0.2",
     "esno": "^0.16.3"
   }
 }

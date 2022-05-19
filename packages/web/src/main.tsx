@@ -1,10 +1,15 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
+import { createRoot } from 'react-dom/client'
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+import './style.css'
+import App from './pages/App'
+
+const root = createRoot(document.getElementById('root')!)
+
+root.render(
+  <DndProvider backend={HTML5Backend}>
     <App />
-  </React.StrictMode>,
+  </DndProvider>,
 )

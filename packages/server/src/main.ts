@@ -1,10 +1,12 @@
 import Koa from 'koa'
 import Router from 'koa-router'
 import koaBody from 'koa-body'
+import cors from 'koa2-cors'
 import { PORT } from './constants'
 
 const app = new Koa()
 
+app.use(cors())
 app.use(koaBody())
 
 const router = new Router()
