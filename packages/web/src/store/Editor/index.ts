@@ -1,10 +1,7 @@
+import { DeepPartial } from '@/draw/types/utils'
 import { makeAutoObservable } from 'mobx'
 import { DrawType, DrawProps } from '../../draw'
 import mockDrawData from './mockDrawData.json'
-
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Record<string, unknown> ? DeepPartial<T[P]> : T[P]
-}
 
 class Editor {
   constructor() {

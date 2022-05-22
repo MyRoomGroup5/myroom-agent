@@ -8,14 +8,12 @@ type TextProps = {
   id: string
   type: DrawType.TEXT
   data: string
-  style: {
-    fontSize: string
-    color: string
-    width: string
-    height: string
-    left: string
-    top: string
-  }
+  fontSize: string
+  color: string
+  width: string
+  height: string
+  left: string
+  top: string
 }
 
 const TextShow: FC = () => {
@@ -32,14 +30,14 @@ const TextShow: FC = () => {
 
 const TextDraw: FC<TextProps> = (props) => {
   const { changeEditId } = useEditorAction()
-  const { id, style, data } = props
+  const { id, data, ...styles } = props
   return (
     <div
       onClick={() => changeEditId(id)}
       style={{
         position: 'absolute',
         backgroundColor: '#bbbbbb',
-        ...style,
+        ...styles,
       }}
     >
       {data}

@@ -17,16 +17,14 @@ const DrawPanel = observer(() => {
       const currentY = y - 20
       const nextItem = {
         id: `text-${panelData.length + 1}`,
-        type: DrawType.TEXT,
+        type: DrawType.TEXT as const,
         data: '我是新建的文字',
-        style: {
-          color: '#000000',
-          fontSize: '12px',
-          width: '100px',
-          height: '20px',
-          left: `${currentX}px`,
-          top: `${currentY}px`,
-        },
+        color: '#000000',
+        fontSize: '12px',
+        width: '100px',
+        height: '20px',
+        left: `${currentX}px`,
+        top: `${currentY}px`,
       }
       runInAction(() => {
         panelData.push(nextItem)
