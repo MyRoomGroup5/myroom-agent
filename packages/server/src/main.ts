@@ -2,7 +2,8 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import koaBody from 'koa-body'
 import cors from 'koa2-cors'
-import { PORT } from './constants'
+
+import run from './run'
 
 const app = new Koa()
 
@@ -26,6 +27,4 @@ router.post('/api/save', async (ctx, next) => {
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`)
-})
+run(app.callback())
