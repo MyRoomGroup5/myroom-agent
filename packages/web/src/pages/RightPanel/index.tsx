@@ -3,6 +3,7 @@ import { drawEditTip } from '@/draw'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
 import { runInAction } from 'mobx'
+import { Button, Input, Space } from 'antd'
 
 const RightPanel = observer(() => {
   const editor = useEditorContext()
@@ -15,25 +16,26 @@ const RightPanel = observer(() => {
     } else {
       const editTip = drawEditTip[editType!]
       const inputs = (Object.keys(editTip) as (keyof typeof editTip)[]).map((k) => (
-        <div style={{ display: 'flex', justifyContent: 'space-between', margin: 5 }} key={k}>
-          <span>{editTip[k]}</span>
-          <input
-            type="text"
+        <Space key={k} align="center" className="between">
+          {editTip[k]}
+          <Input
             value={currEdit[k]}
             onChange={(e) => runInAction(() => (currEdit[k] = e.target.value))}
           />
-        </div>
+        </Space>
       ))
       return <div>{inputs}</div>
     }
   }
 
   return (
-    <div className="right-panel">
+    <Space direction="vertical" className="right-panel">
       {generateRightPanel()}
-      {edit && <button onClick={() => editor.updateEdit()}>确定</button>}
-      {edit && <button onClick={() => editor.deleteEdit()}>删除</button>}
-    </div>
+      <Space size="middle">
+        {edit && <Button onClick={() => editor.updateEdit()}>确定</Button>}
+        {edit && <Button onClick={() => editor.deleteEdit()}>删除</Button>}
+      </Space>
+    </Space>
   )
 })
 

@@ -1,3 +1,4 @@
+import { Button } from 'antd'
 import axios from 'axios'
 import { observer } from 'mobx-react-lite'
 import { TextShow } from '../../draw/Text'
@@ -12,7 +13,7 @@ const LeftPanel = observer(() => {
       <div className="component-list">
         <TextShow />
       </div>
-      <button
+      <Button
         className="save-button"
         onClick={async () => {
           console.log('save:', panelData)
@@ -27,7 +28,7 @@ const LeftPanel = observer(() => {
         }}
       >
         保存到后台
-      </button>
+      </Button>
     </div>
   )
 })

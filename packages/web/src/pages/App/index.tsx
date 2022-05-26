@@ -7,7 +7,7 @@ import { EditorProvider } from '../../store/Editor/context'
 export default function App() {
   return (
     <EditorProvider>
-      <div className="flex-row-space-between app">
+      <div className="app">
         <LeftPanel></LeftPanel>
         <DrawPanel></DrawPanel>
         <RightPanel></RightPanel>
