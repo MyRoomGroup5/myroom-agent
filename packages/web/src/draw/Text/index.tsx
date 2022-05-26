@@ -33,7 +33,7 @@ type buildArg = {
   x: string
   y: string
 }
-const buildTextProps: (arg: buildArg) => TextProps = ({ id, x, y }) => {
+const textBuildProps: (arg: buildArg) => TextProps = ({ id, x, y }) => {
   return {
     id,
     type: DrawType.TEXT as const,
@@ -64,5 +64,5 @@ const TextDraw: FC<TextProps> = (props) => {
   )
 }
 
-export { TextShow, TextDraw, buildTextProps }
+export { TextShow, TextDraw, textBuildProps }
 export type { TextProps }

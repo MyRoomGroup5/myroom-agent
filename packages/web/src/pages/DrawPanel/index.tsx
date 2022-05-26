@@ -2,7 +2,7 @@ import { runInAction } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import { useDrop } from 'react-dnd'
 import { DrawProps, DrawType } from '@/draw'
-import { buildTextProps, TextDraw } from '@/draw/Text'
+import { textBuildProps, TextDraw } from '@/draw/Text'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
 
@@ -19,14 +19,10 @@ const DrawPanel = observer(() => {
       const id = `${type}-${panelData.length + 1}`
       const item: DrawProps = (() => {
         switch (type) {
-          case DrawType.TEXT: {
-            return buildTextProps({ id, x: `${currentX}px`, y: `${currentY}px` })
-          }
-          default: {
-            return { id, type: DrawType.IMAGE, width: '100px', height: '100px' }
-          }
+          case DrawType.TEXT:
+            return textBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
         }
-      })()
+      })()!
       runInAction(() => {
         panelData.push(item)
       })
