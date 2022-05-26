@@ -2,7 +2,7 @@ import { runInAction } from 'mobx'
 import { observer } from 'mobx-react-lite'
 import { useDrop } from 'react-dnd'
 import { DrawProps, DrawType } from '@/draw'
-import { TextDraw } from '@/draw/Text'
+import { buildTextProps, TextDraw } from '@/draw/Text'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
 
@@ -15,31 +15,18 @@ const DrawPanel = observer(() => {
       const { x, y } = monitor.getClientOffset()!
       const currentX = x - 310
       const currentY = y - 20
-      let item: DrawProps
-      switch (monitor.getItemType()! as DrawType) {
-        case DrawType.TEXT: {
-          item = {
-            id: `text-${panelData.length + 1}`,
-            type: DrawType.TEXT as const,
-            data: '我是新建的文字',
-            color: '#000000',
-            fontSize: '12px',
-            width: '100px',
-            height: '20px',
-            left: `${currentX}px`,
-            top: `${currentY}px`,
+      const type = monitor.getItemType()! as DrawType
+      const id = `${type}-${panelData.length + 1}`
+      const item: DrawProps = (() => {
+        switch (type) {
+          case DrawType.TEXT: {
+            return buildTextProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           }
-          break
-        }
-        case DrawType.IMAGE: {
-          item = {
-            id: `image-${panelData.length + 1}`,
-            type: DrawType.IMAGE,
-            width: '100px',
-            height: '100px',
+          default: {
+            return { id, type: DrawType.IMAGE, width: '100px', height: '100px' }
           }
         }
-      }
+      })()
       runInAction(() => {
         panelData.push(item)
       })

@@ -28,6 +28,25 @@ const TextShow: FC = () => {
   )
 }
 
+type buildArg = {
+  id: string
+  x: string
+  y: string
+}
+const buildTextProps: (arg: buildArg) => TextProps = ({ id, x, y }) => {
+  return {
+    id,
+    type: DrawType.TEXT as const,
+    data: '我是新建的文字',
+    color: '#000000',
+    fontSize: '12px',
+    width: '100px',
+    height: '20px',
+    left: x,
+    top: y,
+  }
+}
+
 const TextDraw: FC<TextProps> = (props) => {
   const { changeEditId } = useEditorAction()
   const { id, data, ...styles } = props
@@ -45,5 +64,5 @@ const TextDraw: FC<TextProps> = (props) => {
   )
 }
 
-export { TextShow, TextDraw }
+export { TextShow, TextDraw, buildTextProps }
 export type { TextProps }
