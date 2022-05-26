@@ -11,6 +11,10 @@ class Editor {
   panelData = mockDrawData as DrawProps[]
 
   set editId(id: string) {
+    if (id === '') {
+      this.currEdit = this.edit = null
+      return
+    }
     this.edit = this.panelData.find((d) => d.id === id)!
     this.currEdit = { ...this.edit }
   }
@@ -19,6 +23,13 @@ class Editor {
       return this.edit.type
     }
     return null
+  }
+  deleteEdit() {
+    if (this.edit && this.currEdit) {
+      const idx = this.panelData.findIndex((d) => d.id === this.currEdit!.id)
+      this.panelData.splice(idx, 1)
+      this.editId = ''
+    }
   }
   updateEdit() {
     if (this.edit && this.currEdit) {

@@ -7,7 +7,7 @@ import { runInAction } from 'mobx'
 const RightPanel = observer(() => {
   const editor = useEditorContext()
   const { edit, currEdit, editType } = editor
-
+  console.log(`当前选择${editType}类型组件: `, { ...currEdit })
   const generateRightPanel = () => {
     // 类型守护将 edit/currEdit 剔除 null 类型
     if (edit === null || currEdit === null) {
@@ -32,6 +32,7 @@ const RightPanel = observer(() => {
     <div className="right-panel">
       {generateRightPanel()}
       {edit && <button onClick={() => editor.updateEdit()}>确定</button>}
+      {edit && <button onClick={() => editor.deleteEdit()}>删除</button>}
     </div>
   )
 })

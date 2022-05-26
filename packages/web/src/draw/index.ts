@@ -3,7 +3,7 @@ import { DrawType } from './types'
 
 type DrawPropsMap = {
   [DrawType.TEXT]: TextProps
-  [DrawType.IMAGE]: { id: string; type: DrawType.IMAGE; width: number; height: number }
+  [DrawType.IMAGE]: { id: string; type: DrawType.IMAGE; width: string; height: string }
 }
 
 type DrawProps = DrawPropsMap[keyof DrawPropsMap]
