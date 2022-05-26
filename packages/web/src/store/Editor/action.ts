@@ -6,7 +6,7 @@ const useEditorAction = () => {
   const editor = useEditorContext()
   const changeEditId = useCallback(
     action((id: string) => {
-      editor.currEditId = id
+      editor.editId = id
     }),
     [],
   )

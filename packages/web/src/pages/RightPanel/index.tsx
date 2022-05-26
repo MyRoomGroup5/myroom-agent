@@ -1,34 +1,39 @@
 import { observer } from 'mobx-react-lite'
-import { DrawProps, DrawType } from '@/draw'
+import { drawEditTip } from '@/draw'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
-import TextEdit from '@/draw/Text/Edit'
-import { useRef } from 'react'
+import { runInAction } from 'mobx'
 
 const RightPanel = observer(() => {
-  const editRef = useRef<{ getEditState(): DrawProps }>(null)
   const editor = useEditorContext()
-  const { currEdit } = editor
+  const { edit, currEdit, editType } = editor
+
   const generateRightPanel = () => {
-    if (currEdit === undefined) {
+    // 类型守护将 edit/currEdit 剔除 null 类型
+    if (edit === null || currEdit === null) {
       return <div>未选中元素</div>
-    } else if (currEdit.type === DrawType.TEXT) {
-      return (
-        <div>
-          <TextEdit ref={editRef} {...currEdit} />
-          <button
-            onClick={() => {
-              editor.updateEdit(editRef.current!.getEditState())
-            }}
-          >
-            确定
-          </button>
+    } else {
+      const editTip = drawEditTip[editType!]
+      const inputs = (Object.keys(editTip) as (keyof typeof editTip)[]).map((k) => (
+        <div style={{ display: 'flex', justifyContent: 'space-between', margin: 5 }} key={k}>
+          <span>{editTip[k]}</span>
+          <input
+            type="text"
+            value={currEdit[k]}
+            onChange={(e) => runInAction(() => (currEdit[k] = e.target.value))}
+          />
         </div>
-      )
+      ))
+      return <div>{inputs}</div>
     }
   }
 
-  return <div className="right-panel">{generateRightPanel()}</div>
+  return (
+    <div className="right-panel">
+      {generateRightPanel()}
+      {edit && <button onClick={() => editor.updateEdit()}>确定</button>}
+    </div>
+  )
 })
 
 export default RightPanel
