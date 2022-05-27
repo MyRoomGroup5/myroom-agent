@@ -1,3 +1,4 @@
+import { ImageShow } from '@/draw/Image'
 import { Button } from 'antd'
 import axios from 'axios'
 import { observer } from 'mobx-react-lite'
@@ -12,6 +13,7 @@ const LeftPanel = observer(() => {
     <div className="left-panel">
       <div className="component-list">
         <TextShow />
+        <ImageShow />
       </div>
       <Button
         className="save-button"

@@ -24,6 +24,9 @@ class Editor {
     }
     return null
   }
+  setpanelData(old : DrawProps[]) {
+    this.panelData = old
+  }
   deleteEdit() {
     if (this.edit && this.currEdit) {
       const idx = this.panelData.findIndex((d) => d.id === this.currEdit!.id)
