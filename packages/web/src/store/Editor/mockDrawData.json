@@ -1,5 +1,14 @@
 [
   {
+    "id": "image1",
+    "type": "IMAGE",
+    "data": "asfa",
+    "width": "200px",
+    "height": "200px",
+    "left": "200px",
+    "top": "200px"
+  },
+  {
     "id": "text-1",
     "type": "TEXT",
     "data": "我是 1 号文字",
