@@ -1,10 +1,12 @@
 import { TextProps } from './Text'
 import { ImageProps } from './Image'
 import { DrawType } from './types'
+import { AudioProps } from './Audio'
 
 type DrawPropsMap = {
   [DrawType.TEXT]: TextProps
   [DrawType.IMAGE]: ImageProps
+  [DrawType.AUDIO]: AudioProps
 }
 
 type DrawProps = DrawPropsMap[keyof DrawPropsMap]
@@ -20,6 +22,13 @@ const drawEditTip = {
     top: 'Y',
   },
   [DrawType.IMAGE]: { width: '宽', height: '高' },
+  [DrawType.AUDIO]: {
+    left: 'X',
+    top: 'Y',
+    width: '宽',
+    height: '高',
+    data: '音频Url'
+  }
 }
 
 export { DrawType, drawEditTip }

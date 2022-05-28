@@ -4,6 +4,7 @@ import { useDrop } from 'react-dnd'
 import { DrawProps, DrawType } from '@/draw'
 import { textBuildProps, TextDraw } from '@/draw/Text'
 import { ImageBuildProps, ImageDraw } from '@/draw/Image'
+import { AudioBuildProps, AudioDraw } from '@/draw/Audio'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
 
@@ -11,7 +12,7 @@ const DrawPanel = observer(() => {
   const editor = useEditorContext()
   const { panelData } = editor
   const [, drop] = useDrop(() => ({
-    accept: [DrawType.TEXT, DrawType.IMAGE],
+    accept: [DrawType.TEXT, DrawType.IMAGE, DrawType.AUDIO],
     drop: (_, monitor) => {
       const { x, y } = monitor.getClientOffset()!
       const currentX = x - 310
@@ -24,6 +25,8 @@ const DrawPanel = observer(() => {
             return textBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           case DrawType.IMAGE:
             return ImageBuildProps({id, x: `${currentX}px`, y: `${currentY}px`})
+          case DrawType.AUDIO:
+            return AudioBuildProps({id, x: `${currentX}px`, y: `${currentY}px`})
         }
       })()!
       runInAction(() => {
@@ -40,6 +43,8 @@ const DrawPanel = observer(() => {
         output.push(<TextDraw key={item.id} {...item}></TextDraw>)
       }else if(item.type === DrawType.IMAGE) {
         output.push(<ImageDraw key={item.id} {...item}></ImageDraw>)
+      } else if(item.type === DrawType.AUDIO) {
+        output.push(<AudioDraw key={item.id} {...item}></AudioDraw>)
       }
     }
 

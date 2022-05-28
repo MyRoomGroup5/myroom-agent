@@ -3,6 +3,7 @@ import { Button } from 'antd'
 import axios from 'axios'
 import { observer } from 'mobx-react-lite'
 import { TextShow } from '../../draw/Text'
+import { AudioShow } from '../../draw/Audio'
 import { useEditorContext } from '../../store/Editor/context'
 import './style.css'
 
@@ -14,6 +15,7 @@ const LeftPanel = observer(() => {
       <div className="component-list">
         <TextShow />
         <ImageShow />
+        <AudioShow />
       </div>
       <Button
         className="save-button"
