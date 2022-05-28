@@ -1,4 +1,5 @@
 import { ImageShow } from '@/draw/Image'
+import { RoomCardShow } from '@/draw/RoomCard'
 import { Button } from 'antd'
 import axios from 'axios'
 import { observer } from 'mobx-react-lite'
@@ -14,6 +15,7 @@ const LeftPanel = observer(() => {
       <div className="component-list">
         <TextShow />
         <ImageShow />
+        <RoomCardShow />
       </div>
       <Button
         className="save-button"
