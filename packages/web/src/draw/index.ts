@@ -27,7 +27,6 @@ const drawEditTip = {
     top: 'Y',
     width: '宽',
     height: '高',
-    data: '音频Url'
   }
 }
 
