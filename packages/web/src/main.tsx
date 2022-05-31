@@ -6,11 +6,17 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import 'antd/dist/antd.css'
 import './style.css'
 import App from './pages/App'
-
+import { HashRouter } from 'react-router-dom'
+import CFooter from './components/Footer'
+import CHeader from './components/Header'
+import ToRoutes from './router/index.js'
 const root = createRoot(document.getElementById('root')!)
 
 root.render(
   <DndProvider backend={HTML5Backend}>
-    <App />
+    <HashRouter>
+      <CHeader/>
+      <ToRoutes/>
+    </HashRouter>
   </DndProvider>,
 )

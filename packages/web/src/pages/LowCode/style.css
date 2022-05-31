@@ -1,0 +1,20 @@
+.low-code-content {
+    display: flex;
+    justify-content: space-between;
+}
+.low-code-content>:nth-child(1) {
+    background-color: #fff;
+    min-width: 350px;
+    height: 650px;
+}
+.low-code-content>:nth-child(2) {
+    margin-top: 20px;
+    background-color: #fff;
+    min-width: 650px;
+    height: 600px;
+}
+.low-code-content>:nth-child(3) {
+    background-color: #fff;
+    min-width: 350px;
+    height: 650px;
+}

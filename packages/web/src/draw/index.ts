@@ -21,7 +21,7 @@ const drawEditTip = {
     left: 'X',
     top: 'Y',
   },
-  [DrawType.IMAGE]: { width: '宽', height: '高' },
+  [DrawType.IMAGE]: { width: '宽', height: '高' , left: 'X', top: 'Y',},
   [DrawType.ROOM_CARD]: {
     left: 'X',
     top: 'Y',
