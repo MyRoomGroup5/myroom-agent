@@ -7,12 +7,13 @@ import { ImageBuildProps, ImageDraw } from '@/draw/Image'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
 import { roomCardBuildProps, RoomCardDraw } from '@/draw/RoomCard'
+import {videoBuildProps, VideoDraw} from "@/draw/Video";
 
 const DrawPanel = observer(() => {
   const editor = useEditorContext()
   const { panelData } = editor
   const [, drop] = useDrop(() => ({
-    accept: [DrawType.TEXT, DrawType.IMAGE, DrawType.ROOM_CARD],
+    accept: [DrawType.TEXT, DrawType.IMAGE, DrawType.ROOM_CARD, DrawType.VIDEO],
     drop: (_, monitor) => {
       const { x, y } = monitor.getClientOffset()!
       const currentX = x - 310
@@ -27,6 +28,8 @@ const DrawPanel = observer(() => {
             return ImageBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           case DrawType.ROOM_CARD:
             return roomCardBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
+          case DrawType.VIDEO:
+            return videoBuildProps({id, x: `${currentX}px`, y: `${currentY}px`})
         }
       })()!
       runInAction(() => {
@@ -45,6 +48,8 @@ const DrawPanel = observer(() => {
         output.push(<ImageDraw key={item.id} {...item}></ImageDraw>)
       } else if (item.type === DrawType.ROOM_CARD) {
         output.push(<RoomCardDraw key={item.id} {...item}></RoomCardDraw>)
+      } else if (item.type === DrawType.VIDEO) {
+        output.push(<VideoDraw key={item.id} {...item}></VideoDraw>)
       }
     }
 

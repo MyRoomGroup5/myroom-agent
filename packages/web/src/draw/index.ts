@@ -2,11 +2,13 @@ import { TextProps } from './Text'
 import { ImageProps } from './Image'
 import { RoomCardProps } from './RoomCard'
 import { DrawType } from './types'
+import { VideoProps } from "./Video";
 
 type DrawPropsMap = {
   [DrawType.TEXT]: TextProps
   [DrawType.IMAGE]: ImageProps
   [DrawType.ROOM_CARD]: RoomCardProps
+  [DrawType.VIDEO]: VideoProps
 }
 
 type DrawProps = DrawPropsMap[keyof DrawPropsMap]
@@ -26,6 +28,12 @@ const drawEditTip = {
     left: 'X',
     top: 'Y',
     fontSize: '卡片大小',
+  },
+  [DrawType.VIDEO]: {
+    width: '宽',
+    height: '高',
+    left: 'X',
+    top: 'Y',
   },
 }
 

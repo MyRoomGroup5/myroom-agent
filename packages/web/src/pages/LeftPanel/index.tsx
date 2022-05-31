@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite'
 import { TextShow } from '../../draw/Text'
 import { useEditorContext } from '../../store/Editor/context'
 import './style.css'
+import {VideoShow} from "@/draw/Video";
 
 const LeftPanel = observer(() => {
   const { panelData } = useEditorContext()
@@ -16,6 +17,7 @@ const LeftPanel = observer(() => {
         <TextShow />
         <ImageShow />
         <RoomCardShow />
+          <VideoShow />
       </div>
       <Button
         className="save-button"
