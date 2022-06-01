@@ -1,4 +1,5 @@
 import { ImageShow } from '@/draw/Image'
+import { RoomCardShow } from '@/draw/RoomCard'
 import { Button } from 'antd'
 import axios from 'axios'
 import { observer } from 'mobx-react-lite'
@@ -6,6 +7,7 @@ import { TextShow } from '../../draw/Text'
 import { AudioShow } from '../../draw/Audio'
 import { useEditorContext } from '../../store/Editor/context'
 import './style.css'
+import {VideoShow} from "@/draw/Video";
 
 const LeftPanel = observer(() => {
   const { panelData } = useEditorContext()
@@ -16,6 +18,8 @@ const LeftPanel = observer(() => {
         <TextShow />
         <ImageShow />
         <AudioShow />
+        <RoomCardShow />
+          <VideoShow />
       </div>
       <Button
         className="save-button"

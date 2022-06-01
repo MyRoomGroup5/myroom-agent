@@ -1,0 +1,18 @@
+.info-content {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+.info-content>div {
+    height: 400px;
+    background-color: #fff;
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.info-content>div>:nth-child(4)>button {
+    background-color: cornflowerblue;
+    border-radius: 25%;
+}

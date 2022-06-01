@@ -1,0 +1,29 @@
+
+body {
+    background: url('./img/u1.jpg') no-repeat ;
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+html {
+    font-size: 16px;
+}
+.out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+.in {
+    display: flex;
+    flex-direction: column;
+}
+.tittle {
+    flex: 1;
+    font-size: 36px;
+    padding-bottom: 20px;
+}
+.login {
+    display: flex;
+    justify-content: center;
+}

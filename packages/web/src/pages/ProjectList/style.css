@@ -1,0 +1,42 @@
+.content {
+    margin-top: 100px;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+}
+.content>div {
+    width: 1200px;
+}
+.find {
+    height: 64px;
+    width: 1200px;
+    background-color: #fff;
+    display: flex;
+}
+.find>:nth-child(1) {
+    font-size: 16px;
+    width: 100px;
+    text-align: center;
+    line-height: 64px;
+}
+.find>:nth-child(2) {
+    margin-left: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 64px;
+}
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.add>:nth-child(1) {
+    border-style: dashed;
+    border-color: gainsboro;
+    height: 64px;
+    width: 1160px;
+}
+a {
+    color: blue;
+}
