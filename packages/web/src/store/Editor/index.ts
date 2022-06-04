@@ -24,7 +24,7 @@ class Editor {
     }
     return null
   }
-  setpanelData(old : DrawProps[]) {
+  setpanelData(old: DrawProps[]) {
     this.panelData = old
   }
   deleteEdit() {

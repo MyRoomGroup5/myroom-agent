@@ -8,7 +8,8 @@
 }
 
 /* 清除格式 */
-h3, h4 {
+h3,
+h4 {
   font-size: 100%;
   font: inherit;
   margin: 0;
@@ -67,10 +68,12 @@ h3, h4 {
 } */
 
 /* 字体颜色 */
-.room-card-draw .detail-info h3, .room-card-draw .price h3 {
+.room-card-draw .detail-info h3,
+.room-card-draw .price h3 {
   color: #373737;
 }
 
-.room-card-draw .detail-info h4, .room-card-draw .price h4 {
+.room-card-draw .detail-info h4,
+.room-card-draw .price h4 {
   color: #969696;
 }

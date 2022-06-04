@@ -7,7 +7,7 @@ import { TextShow } from '../../draw/Text'
 import { AudioShow } from '../../draw/Audio'
 import { useEditorContext } from '../../store/Editor/context'
 import './style.css'
-import {VideoShow} from "@/draw/Video";
+import { VideoShow } from '@/draw/Video'
 
 const LeftPanel = observer(() => {
   const { panelData } = useEditorContext()
@@ -19,7 +19,7 @@ const LeftPanel = observer(() => {
         <ImageShow />
         <AudioShow />
         <RoomCardShow />
-          <VideoShow />
+        <VideoShow />
       </div>
       <Button
         className="save-button"

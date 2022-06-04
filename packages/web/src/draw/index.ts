@@ -3,7 +3,7 @@ import { ImageProps } from './Image'
 import { RoomCardProps } from './RoomCard'
 import { DrawType } from './types'
 import { AudioProps } from './Audio'
-import { VideoProps } from "./Video";
+import { VideoProps } from './Video'
 
 type DrawPropsMap = {
   [DrawType.TEXT]: TextProps
@@ -31,9 +31,9 @@ const drawEditTip = {
     top: 'Y',
     width: '宽',
     height: '高',
-    data: '音频Url'
+    data: '音频Url',
   },
-  [DrawType.IMAGE]: { width: '宽', height: '高' , left: 'X', top: 'Y',},
+  [DrawType.IMAGE]: { width: '宽', height: '高', left: 'X', top: 'Y' },
   [DrawType.ROOM_CARD]: {
     left: 'X',
     top: 'Y',

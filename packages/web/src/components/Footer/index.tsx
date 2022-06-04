@@ -1,8 +1,4 @@
-import React,{ memo } from 'react'
+import React, { memo } from 'react'
 export default memo(function CFooter() {
-    return (
-        <div>
-            Footer
-        </div>
-    )
+  return <div>Footer</div>
 })

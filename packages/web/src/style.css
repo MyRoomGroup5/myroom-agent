@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #F0F2F5;
+  background-color: #f0f2f5;
 }
 
 .flex-row-space-between {
@@ -9,4 +9,3 @@ body {
   flex-direction: row;
   justify-content: space-between;
 }
-

@@ -1,14 +1,14 @@
-import React from 'react';
-import 'antd/dist/antd.css';
-import './index.css';
-import { Form, Input, Button, Checkbox } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import {useNavigate,useLocation,useResolvedPath } from "react-router-dom";
+import React from 'react'
+import 'antd/dist/antd.css'
+import './index.css'
+import { Form, Input, Button, Checkbox } from 'antd'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
+import { useNavigate, useLocation, useResolvedPath } from 'react-router-dom'
 
 const NormalLoginForm = () => {
-  const onFinish = (values : any) => {
-    console.log('Received values of form: ', values);
-  };
+  const onFinish = (values: any) => {
+    console.log('Received values of form: ', values)
+  }
 
   return (
     <Form
@@ -62,7 +62,7 @@ const NormalLoginForm = () => {
         <a href="">立即注册!</a>
       </Form.Item>
     </Form>
-  );
-};
+  )
+}
 
-export default () => <NormalLoginForm />;
+export default () => <NormalLoginForm />

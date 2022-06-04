@@ -8,7 +8,7 @@ import { AudioBuildProps, AudioDraw } from '@/draw/Audio'
 import { useEditorContext } from '@/store/Editor/context'
 import './style.css'
 import { roomCardBuildProps, RoomCardDraw } from '@/draw/RoomCard'
-import {videoBuildProps, VideoDraw} from "@/draw/Video";
+import { videoBuildProps, VideoDraw } from '@/draw/Video'
 
 const DrawPanel = observer(() => {
   const editor = useEditorContext()
@@ -26,13 +26,13 @@ const DrawPanel = observer(() => {
           case DrawType.TEXT:
             return textBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           case DrawType.IMAGE:
-            return ImageBuildProps({id, x: `${currentX}px`, y: `${currentY}px`})
+            return ImageBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           case DrawType.AUDIO:
-            return AudioBuildProps({id, x: `${currentX}px`, y: `${currentY}px`})
+            return AudioBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           case DrawType.ROOM_CARD:
             return roomCardBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
           case DrawType.VIDEO:
-            return videoBuildProps({id, x: `${currentX}px`, y: `${currentY}px`})
+            return videoBuildProps({ id, x: `${currentX}px`, y: `${currentY}px` })
         }
       })()!
       runInAction(() => {
@@ -49,7 +49,7 @@ const DrawPanel = observer(() => {
         output.push(<TextDraw key={item.id} {...item}></TextDraw>)
       } else if (item.type === DrawType.IMAGE) {
         output.push(<ImageDraw key={item.id} {...item}></ImageDraw>)
-      } else if(item.type === DrawType.AUDIO) {
+      } else if (item.type === DrawType.AUDIO) {
         output.push(<AudioDraw key={item.id} {...item}></AudioDraw>)
       } else if (item.type === DrawType.ROOM_CARD) {
         output.push(<RoomCardDraw key={item.id} {...item}></RoomCardDraw>)

@@ -1,13 +1,13 @@
-import { FC, useRef, useState } from 'react'
+import { FC, useState } from 'react'
 import { useDrag } from 'react-dnd'
 import useEditorAction from '../../store/Editor/action'
 import { DrawType } from '../types'
 import { useEditorContext } from '../../store/Editor/context'
-import { Button, Upload, message } from 'antd'
+import { message } from 'antd'
 import './style.css'
 // import Audio from '@/components/Audio'
-import ReactAudioPlayer from 'react-audio-player';
-import type { UploadProps } from 'antd';
+import ReactAudioPlayer from 'react-audio-player'
+import type { UploadProps } from 'antd'
 
 type AudioProps = {
   id: string
@@ -43,15 +43,15 @@ const props: UploadProps = {
   },
   onChange(info) {
     if (info.file.status !== 'uploading') {
-      console.log(info.file, info.fileList);
+      console.log(info.file, info.fileList)
     }
     if (info.file.status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully`);
+      message.success(`${info.file.name} file uploaded successfully`)
     } else if (info.file.status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
+      message.error(`${info.file.name} file upload failed.`)
     }
   },
-};
+}
 
 const AudioShow: FC = () => {
   const [, drag] = useDrag(() => ({
@@ -68,51 +68,52 @@ const AudioShow: FC = () => {
 const AudioDraw: FC<AudioProps> = (props) => {
   const editor = useEditorContext()
   const { panelData } = editor
-  const [isLogin, setLogin] = useState(false);
-  
-  const { id, data, ...styles} = props
+  const [isLogin, setLogin] = useState(false)
+
+  const { id, data, ...styles } = props
   const [url, setUrl] = useState(data)
 
   const { changeEditId } = useEditorAction()
-  const change = (e : any) => {
+  const change = (e: any) => {
     setLogin(true)
     setUrl(URL.createObjectURL(e.currentTarget.files[0]))
-    panelData.forEach((item, key, panelData)=> {
-      if(item.id === id) {
-        const reader = new FileReader();
-        reader.readAsDataURL(e.currentTarget.files[0]);
-          reader.onload = function(){
-              item.data = reader.result;
-              editor.setpanelData(panelData)
-          }
+    panelData.forEach((item, key, panelData) => {
+      if (item.id === id) {
+        const reader = new FileReader()
+        reader.readAsDataURL(e.currentTarget.files[0])
+        reader.onload = function () {
+          item.data = reader.result
+          editor.setpanelData(panelData)
+        }
       }
     })
-}
+  }
   return (
     <div
       onClick={() => changeEditId(id)}
       style={{
         position: 'absolute',
         ...styles,
-        paddingRight: '30px'
+        paddingRight: '30px',
       }}
     >
       {/* <Audio playing={playing} setPlaying={setPlaying} data={data} /> */}
-      {
-        url ?
-        <ReactAudioPlayer
-          className='audio'
-          src={url}
-          autoPlay
-          controls
-        />
-        :
-        <input name='未选择' style={{marginTop: "80px",marginLeft: "20px"}} type="file" accept="mp3" onChange={e => {change(e)}}></input>
-      }
-      
+      {url ? (
+        <ReactAudioPlayer className="audio" src={url} autoPlay controls />
+      ) : (
+        <input
+          name="未选择"
+          style={{ marginTop: '80px', marginLeft: '20px' }}
+          type="file"
+          accept="mp3"
+          onChange={(e) => {
+            change(e)
+          }}
+        ></input>
+      )}
     </div>
   )
 }
 
-export { AudioShow, AudioDraw, AudioBuildProps}
+export { AudioShow, AudioDraw, AudioBuildProps }
 export type { AudioProps }

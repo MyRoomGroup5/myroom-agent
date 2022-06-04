@@ -1,16 +1,16 @@
-import React,{ memo } from 'react'
-import 'antd/dist/antd.css';
-import { Table, Tag, Space, Input } from 'antd';
-import { AudioOutlined } from '@ant-design/icons';
-import type { ColumnsType } from 'antd/lib/table';
-import "./style.css"
-const { Search } = Input;
+import React, { memo } from 'react'
+import 'antd/dist/antd.css'
+import { Table, Tag, Space, Input } from 'antd'
+import { AudioOutlined } from '@ant-design/icons'
+import type { ColumnsType } from 'antd/lib/table'
+import './style.css'
+const { Search } = Input
 interface DataType {
-  key: string;
-  name: string;
-  time: any;
-  author: string;
-  tags: string[];
+  key: string
+  name: string
+  time: any
+  author: string
+  tags: string[]
 }
 
 const columns: ColumnsType<DataType> = [
@@ -18,7 +18,7 @@ const columns: ColumnsType<DataType> = [
     title: '项目名称',
     dataIndex: 'name',
     key: 'name',
-    render: text => <a>{text}</a>,
+    render: (text) => <a>{text}</a>,
   },
   {
     title: '作者',
@@ -45,57 +45,50 @@ const columns: ColumnsType<DataType> = [
       </Space>
     ),
   },
-];
+]
 
 const data: DataType[] = [
   {
     key: '1',
     name: '项目1',
     time: new Date().toDateString(),
-    author: "ccc",
+    author: 'ccc',
     tags: ['nice', 'developer'],
   },
   {
     key: '2',
     name: '项目2',
     time: new Date().toDateString(),
-    author: "ccc",
+    author: 'ccc',
     tags: ['loser'],
   },
   {
     key: '3',
     name: '项目3',
     time: new Date().toDateString(),
-    author: "ccc",
+    author: 'ccc',
     tags: ['cool', 'teacher'],
   },
-];
+]
 
 export default memo(function ProjectList() {
-    const onSearch = () => {
-
-    }
-    return (
-        <div className='content'>
-            <div>
-                <div className='find'>
-                    <div>项目列表</div>
-                    <div>
-                        <Search placeholder="请输入" onSearch={onSearch} enterButton />
-                    </div>
-                </div>
-                <div className="find add">
-                    <div>
-                        <a>+添加新项目</a>
-                    </div>
-                </div>
-                <Table columns={columns} dataSource={data} />
-            </div>  
+  const onSearch = () => {}
+  return (
+    <div className="content">
+      <div>
+        <div className="find">
+          <div>项目列表</div>
+          <div>
+            <Search placeholder="请输入" onSearch={onSearch} enterButton />
+          </div>
         </div>
-    )
+        <div className="find add">
+          <div>
+            <a>+添加新项目</a>
+          </div>
+        </div>
+        <Table columns={columns} dataSource={data} />
+      </div>
+    </div>
+  )
 })
-
-
-
-
-
